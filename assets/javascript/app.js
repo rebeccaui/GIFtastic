@@ -12,6 +12,7 @@ var gifContainer = $("#gifContainer");
 
 var show;
 var name = "";
+var j;
 
 //Loop to append a button for each string in the html
 function createBtn() {
@@ -25,7 +26,10 @@ console.log("TV Shows: " + topics);
 
 
 //Give those buttons the on click function of
-$("button").on("click", function getGifs() {
+function getGifs() {
+$("button").on("click", function () {
+    //Clear the divContainer of other shows
+    $("#divContainer").empty();
     //THe variable show is given this button function and given the attribute "tvShow"
     var show = $(this).attr("tvShow");
     //The variable queryURL holds the giphy API
@@ -83,6 +87,9 @@ $("button").on("click", function getGifs() {
 
 
 });
+    
+}
+getGifs();
 
 //Add a form to the html that takes the value from a user input box 
 $("form").submit(function(event) {
@@ -94,15 +101,9 @@ $("form").submit(function(event) {
     topics.push(userInput);
     //When a show is pushed to the array, make a button for it
     buttonsDiv.append("<button tvShow='" + topics[i] + "'>" + topics[i] + "</button>");
-        if ($(this).attr("tvShow") === name) {
-            name = $(this).attr("tvShow");
-            console.log(this);
-            $("#gifDiv").html("");
-            j = 10;
-        } else {
-            $("#gifContainer").html("Nope");
-        }
-    
+    getGifs();
+    //Empty the input box by inserting an empty string as the value
+    $("#userInput").val("");
     console.log("TV Shows: " + topics);
     console.log(topics);
 });
@@ -116,6 +117,14 @@ $("form").submit(function(event) {
         1. Ensure your app is fully mobile responsive.
         2. Allow users to request additional gifs to be added to the page.
             Each request should ADD 10 gifs to the page, NOT overwrite the existing gifs.
+                if ($(this).attr("tvShow") === name) {
+            name = $(this).attr("tvShow");
+            console.log(this);
+            $("#gifContainer").html("");
+            j = 10;
+        } else {
+            $("#gifContainer").html("Nope");
+        }
         3. List additional metadata (title, tags, etc) for each gif in a clean and readable format.
         4. Include a 1-click download button for each gif, this should work across device types.
         5. Integrate this search with additional APIs such as OMDB, or Bands in Town. Be creative and build something you are proud to showcase in your portfolio
