@@ -1,1 +1,40 @@
+body {
+    background-image: url("../images/yellow-wallpaper.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-shadow: .75px .75px white;
+    background-color: black;
+}
 
+div, form {
+    text-align: center;
+}
+
+form {
+    font-size: 20px;
+}
+
+button {
+    padding: 5px 10px 5px 10px;
+    margin: 20px 20px;
+}
+
+#inputBtn {
+    margin: 20px 20px;
+
+}
+
+#gifContainer {
+    border: 2px solid black;
+    margin: 3px 3px;
+    width: 800px;
+    text-align: center;
+
+}
+
+.gifDiv {
+    float: left;
+    margin: 3px 3px;
+
+}
