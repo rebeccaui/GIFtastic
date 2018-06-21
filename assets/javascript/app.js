@@ -11,6 +11,7 @@ var buttonsDiv = $("#buttonsDiv");
 var gifContainer = $("#gifContainer");
 
 var show;
+var name = "";
 
 //Loop to append a button for each string in the html
 function createBtn() {
@@ -93,7 +94,14 @@ $("form").submit(function(event) {
     topics.push(userInput);
     //When a show is pushed to the array, make a button for it
     buttonsDiv.append("<button tvShow='" + topics[i] + "'>" + topics[i] + "</button>");
-    $("button").on("click", getGifs());
+        if ($(this).attr("tvShow") === name) {
+            name = $(this).attr("tvShow");
+            console.log(this);
+            $("#gifDiv").html("");
+            j = 10;
+        } else {
+            $("#gifContainer").html("Nope");
+        }
     
     console.log("TV Shows: " + topics);
     console.log(topics);
